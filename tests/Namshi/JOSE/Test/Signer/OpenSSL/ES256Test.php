@@ -3,13 +3,15 @@
 namespace Namshi\JOSE\Test\OpenSSL\Signer;
 
 use Namshi\JOSE\Signer\OpenSSL\ES256;
+use Namshi\JOSE\Test\Signer\SecLib\SecLibTestCase;
 use \PHPUnit_Framework_TestCase as TestCase;
 
-class ES256Test extends TestCase
+class ES256Test extends SecLibTestCase
 {
 
     public function setup()
     {
+        parent::setup();
         // https://github.com/sebastianbergmann/phpunit/issues/1356
         if (defined('HHVM_VERSION')) {
             $this->markTestSkipped();

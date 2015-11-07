@@ -34,6 +34,11 @@ class JWS extends JWT
         if (!in_array($encryptionEngine, $this->supportedEncryptionEngines)) {
             throw new InvalidArgumentException(sprintf("Encryption engine %s is not supported", $encryptionEngine));
         }
+
+        if ('SecLib' === $encryptionEngine && version_compare(PHP_VERSION, '7.0.0-dev') >= 0) {
+            throw new InvalidArgumentException("phpseclib 1.0.0(LTS), even the latest 2.0.0, doesn't support PHP7 yet");
+        }
+
         $this->encryptionEngine = $encryptionEngine;
 
         parent::__construct(array(), $header);

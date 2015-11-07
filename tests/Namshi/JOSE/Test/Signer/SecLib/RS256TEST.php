@@ -1,13 +1,14 @@
 <?php
 
-namespace Namshi\JOSE\Test\SecLib\Signer;
+namespace Namshi\JOSE\Test\Signer\SecLib;
 
 use Namshi\JOSE\Signer\SecLib\RS256;
-use \PHPUnit_Framework_TestCase as TestCase;
 
-class RS256Test extends TestCase {
+class RS256Test extends SecLibTestCase{
     public function setup()
     {
+        parent::setup();
+
         $this->privateKey   = file_get_contents(SSL_KEYS_PATH . "private.key");
         $this->public       = file_get_contents(SSL_KEYS_PATH . "public.key");
         $this->password     = 'tests';

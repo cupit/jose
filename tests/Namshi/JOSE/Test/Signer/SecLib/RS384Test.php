@@ -1,14 +1,15 @@
 <?php
 
-
-namespace Namshi\JOSE\Test\SecLib\Signer;
+namespace Namshi\JOSE\Test\Signer\SecLib;
 
 use Namshi\JOSE\Signer\SecLib\RS384;
-use \PHPUnit_Framework_TestCase as TestCase;
+use Namshi\JOSE\Test\Signer\SecLib\SecLibTestCase;
 
-class RS384Test extends TestCase {
+class RS384Test extends SecLibTestCase {
     public function setup()
     {
+        parent::setup();
+
         $this->privateKey   = file_get_contents(SSL_KEYS_PATH . "private.key");
         $this->public       = file_get_contents(SSL_KEYS_PATH . "public.key");
         $this->password     = 'tests';

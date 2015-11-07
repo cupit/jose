@@ -231,6 +231,10 @@ class JWSTest extends TestCase
 
     public function testSignAndVerifyWithSecLib()
     {
+        if(version_compare(PHP_VERSION, '7.0.0-dev') >= 0){
+            $this->setExpectedException('InvalidArgumentException');
+        }
+
         $jwsRSA  = new JWS(array('alg' => 'RS256'), 'SecLib');
         $data = array('a' => 'b',);
         $jwsRSA->setPayload($data);
